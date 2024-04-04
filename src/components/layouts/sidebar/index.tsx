@@ -10,6 +10,7 @@ import { IoDocumentTextOutline, IoCalendarOutline } from "react-icons/io5";
 import { HiOutlineBuildingOffice2, HiOutlineUsers } from "react-icons/hi2";
 import { BsGear } from "react-icons/bs";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 interface SidebarProps {}
 
@@ -78,6 +79,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
             <Button
               variant={"ghost"}
               className="w-full justify-start rounded-none hover:text-primary"
+              onClick={() => signOut()}
             >
               <AiOutlineLogout className="mr-2 text-lg " /> Logout
             </Button>
