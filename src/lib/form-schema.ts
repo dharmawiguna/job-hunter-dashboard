@@ -4,7 +4,7 @@ import { z } from "zod";
 export const jobFormSchema = z.object({
   roles: z
     .string({ required_error: "job title is required" })
-    .min(80, { message: "job title must be at least 80 character" }),
+    .min(10, { message: "job title must be at least 10 character" }),
   jobType: z.enum(JOBTYPES, { required_error: "Please select a job types" }),
   salaryFrom: z.string({ required_error: "Salary from is required" }),
   salaryTo: z.string({ required_error: "Salary To is required" }),
@@ -35,9 +35,7 @@ export const jobFormSchema = z.object({
 });
 
 export const overviewFormSchema = z.object({
-  image: z
-    .any()
-    .refine((item: any) => item?.name, { message: "Images is required" }),
+  image: z.any(),
   name: z.string({ required_error: "Name is required" }),
   website: z.string({ required_error: "Website is required" }),
   location: z.string({ required_error: "Location is required" }),

@@ -24,6 +24,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useSession } from "next-auth/react";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 interface DialogAddTeamProps {}
 
@@ -32,8 +35,37 @@ const DialogAddTeam: FC<DialogAddTeamProps> = ({}) => {
     resolver: zodResolver(teamFormSchema),
   });
 
-  const onSubmit = (val: z.infer<typeof teamFormSchema>) => {
-    console.log(val);
+  const { data: session } = useSession();
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const onSubmit = async (val: z.infer<typeof teamFormSchema>) => {
+    try {
+      const body = {
+        ...val,
+        companyId: session?.user.id,
+      };
+
+      await fetch("/api/company/teams", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      await toast({
+        title: "Success",
+        description: "Add Member Success",
+      });
+
+      router.refresh();
+    } catch (error) {
+      await toast({
+        title: "error",
+        description: "Please try again!",
+      });
+
+      console.log(error);
+    }
   };
   return (
     <div>
