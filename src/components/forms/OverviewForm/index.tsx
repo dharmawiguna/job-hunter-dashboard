@@ -242,7 +242,7 @@ const OverviewForm: FC<OverviewFormProps> = ({ detail }) => {
                         </FormControl>
                         <SelectContent>
                           {data?.map((item: Industry) => (
-                            <SelectItem value={item.id} key={item.id + 1}>
+                            <SelectItem value={item.name} key={item.id + 1}>
                               {item.name}
                             </SelectItem>
                           ))}
