@@ -1,24 +1,26 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ButtonActionTable from "@/components/organisms/ButtonActionTable";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { JOB_LISTING_COLUMNS, JOB_LISTING_DATA } from "@/constants";
+import { JOB_LISTING_COLUMNS } from "@/constants";
+import { dateFormat } from "@/lib/utils";
+import { Job } from "@prisma/client";
+import moment from "moment";
+import { getServerSession } from "next-auth";
 import { FC } from "react";
 import prisma from "../../../../lib/prisma";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Job } from "@prisma/client";
-import { dateFormat } from "@/lib/utils";
-import moment from "moment";
 
 interface JobListingsPageProps {}
+
+export const revalidate = 0;
+
 async function getDataJobs() {
   const session = await getServerSession(authOptions);
   const jobs = prisma.job.findMany({

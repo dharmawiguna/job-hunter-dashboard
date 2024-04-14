@@ -13,6 +13,9 @@ type paramsType = {
 interface JobDetailPageProps {
   params: paramsType;
 }
+
+export const revalidate = 0;
+
 async function getDetailJob(id: string) {
   const job = await prisma.job.findFirst({
     where: {
