@@ -5,9 +5,9 @@ import Sidebar from "@/components/layouts/sidebar";
 import Header from "@/components/layouts/header";
 import NextAuthProvider from "../context/NextAuthProvider";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { Toaster } from "@/components/ui/toaster";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 

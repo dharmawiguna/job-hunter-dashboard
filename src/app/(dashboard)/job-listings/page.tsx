@@ -1,4 +1,3 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ButtonActionTable from "@/components/organisms/ButtonActionTable";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -16,6 +15,7 @@ import moment from "moment";
 import { getServerSession } from "next-auth";
 import { FC } from "react";
 import prisma from "../../../../lib/prisma";
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 
 interface JobListingsPageProps {}
 

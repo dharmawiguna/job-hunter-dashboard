@@ -1,7 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
-import prisma from "../../../../../lib/prisma";
 import { comparePassword } from "@/lib/utils";
+import prisma from "../../../../lib/prisma";
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -55,7 +56,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      session.user.id = token.id as string;
+      session.user.id = token.id;
 
       return session;
     },

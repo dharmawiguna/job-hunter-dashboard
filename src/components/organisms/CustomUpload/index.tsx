@@ -35,7 +35,7 @@ const CustomUpload: FC<CustomUploadProps> = ({ form, name }) => {
     if (form.getValues(name) !== "") {
       getImage();
     }
-  }, []);
+  }, [form, name]);
   return (
     <div className="inline-flex items-center gap-8">
       <div>
