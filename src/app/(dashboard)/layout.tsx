@@ -7,7 +7,7 @@ import NextAuthProvider from "../context/NextAuthProvider";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { Toaster } from "@/components/ui/toaster";
-import { authOptions } from "../api/auth/[...nextauth]";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 

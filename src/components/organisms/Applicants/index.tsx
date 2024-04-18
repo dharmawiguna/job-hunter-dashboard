@@ -35,7 +35,7 @@ const Applicants: FC<ApplicantsProps> = ({ applicants }) => {
             <>
               {applicants.map((item: any, i: number) => (
                 <TableRow key={item.id + 1}>
-                  <TableCell>{item.user.name}</TableCell>
+                  <TableCell>{item.User.name}</TableCell>
                   <TableCell>
                     <ButtonActionTable url="/" />
                   </TableCell>

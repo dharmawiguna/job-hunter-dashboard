@@ -15,7 +15,7 @@ import moment from "moment";
 import { getServerSession } from "next-auth";
 import { FC } from "react";
 import prisma from "../../../../lib/prisma";
-import { authOptions } from "@/app/api/auth/[...nextauth]";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface JobListingsPageProps {}
 
